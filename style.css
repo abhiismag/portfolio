@@ -302,6 +302,26 @@ nav.scrolled {
   margin: 0.25rem 0;
 }
 
+/* Stylish bullet list inside timeline items */
+.timeline-item ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0.5rem 0 0 0;
+}
+.timeline-item ul li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 0.5rem;
+}
+.timeline-item ul li i {
+  color: var(--secondary-color);
+  margin-right: 0.5rem;
+  margin-top: 0.15rem;
+}
+.timeline-item ul li span {
+  flex: 1;
+}
+
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

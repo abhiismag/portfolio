@@ -11,9 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
     navMenu.classList.toggle('show');
   });
 
-  // Close mobile menu when clicking a link
+  // Handle nav link clicks with smooth scrolling and close mobile menu
   navLinks.forEach(link => {
-    link.addEventListener('click', function() {
+    link.addEventListener('click', function(event) {
+      // prevent default anchor jump
+      event.preventDefault();
+      const targetId = this.getAttribute('href').substring(1);
+      const targetSection = document.getElementById(targetId);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+      }
+      // close mobile navigation if open
       navMenu.classList.remove('show');
     });
   });
