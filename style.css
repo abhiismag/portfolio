@@ -1,6 +1,7 @@
 :root {
   --primary-color: #212529;
-  --secondary-color: #007bff;
+  /* Darker blue for accents */
+  --secondary-color: #002f6c;
   --light-color: #f8f9fa;
 }
 
@@ -151,7 +152,8 @@ nav.scrolled {
   text-align: center;
   color: #fff;
   background-image: url('profile.jpg');
-  background-size: cover;
+  /* Zoom the background out slightly so more of the portrait is visible */
+  background-size: 110%;
   background-position: center;
 }
 
@@ -161,7 +163,8 @@ nav.scrolled {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  /* Darker overlay to further fade the background image and emphasise the text */
+  background-color: rgba(0, 0, 0, 0.75);
   z-index: 0;
 }
 
@@ -398,6 +401,60 @@ nav.scrolled {
 .social-links a:hover {
   background-color: var(--secondary-color);
   color: #fff;
+}
+
+/* Publication metrics styling */
+.pub-metrics {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1.5rem 0 2.5rem;
+  flex-wrap: wrap;
+}
+
+.metric-box {
+  background-color: #fff;
+  border: 2px solid var(--secondary-color);
+  border-radius: 12px;
+  padding: 1.25rem 1.5rem;
+  width: 140px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.metric-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
+.metric-label {
+  display: block;
+  margin-top: 0.25rem;
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+  .metric-box {
+    width: 120px;
+    padding: 1rem;
+  }
+  .metric-number {
+    font-size: 2rem;
+  }
+}
+
+/* Ensure all anchor links in body use the accent colour */
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+a:hover {
+  color: #001d47;
+  text-decoration: underline;
 }
 
 footer {

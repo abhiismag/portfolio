@@ -85,4 +85,32 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 
   window.addEventListener('scroll', onScroll);
+
+  // Animate publication metrics when they enter the viewport
+  const metricNumbers = document.querySelectorAll('.metric-number');
+  if (metricNumbers.length) {
+    const metricsObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+          entry.target.classList.add('counted');
+          const targetValue = parseInt(entry.target.getAttribute('data-target'), 10);
+          let currentValue = 1;
+          // Determine a suitable increment to finish in ~2 seconds
+          const totalSteps = 100;
+          const increment = Math.max(1, Math.floor(targetValue / totalSteps));
+          const interval = setInterval(() => {
+            currentValue += increment;
+            if (currentValue >= targetValue) {
+              entry.target.textContent = targetValue + '+';
+              clearInterval(interval);
+            } else {
+              entry.target.textContent = currentValue;
+            }
+          }, 20);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    metricNumbers.forEach(num => metricsObserver.observe(num));
+  }
 });
